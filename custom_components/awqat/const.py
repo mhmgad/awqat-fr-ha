@@ -7,6 +7,7 @@ from typing import Final
 
 DOMAIN: Final = "awqat"
 PLATFORMS: Final = ["sensor"]
+EVENT_AWQAT: Final = "awqat_event"
 
 ATTRIBUTION: Final = "Prayer times from Awqat (awqat.fr)"
 MANUFACTURER: Final = "Awqat"
@@ -21,6 +22,8 @@ CONF_MOSQUE_ALIAS: Final = "mosque_alias"
 CONF_QUERY: Final = "query"
 CONF_NEARBY: Final = "nearby"
 CONF_MOSQUE: Final = "mosque"
+CONF_CREATE_AUTOMATIONS: Final = "create_automations"
+CONF_AUTOMATION_IDS: Final = "automation_ids"
 
 NEARBY_DISTANCE_KM: Final = 40
 
@@ -47,3 +50,9 @@ DISPLAY_NAMES: Final = {
     "maghrib": "Maghrib",
     "isha": "Isha",
 }
+
+ADHAN_TRIGGER_TYPES: Final = ("fajr", "dhuhr", "asr", "maghrib", "isha", "jumua", "sunrise")
+IQAMA_TRIGGER_TYPES: Final = ("iqama_fajr", "iqama_dhuhr", "iqama_asr", "iqama_maghrib", "iqama_isha", "iqama_jumua")
+TRIGGER_TYPES: Final = ADHAN_TRIGGER_TYPES + IQAMA_TRIGGER_TYPES
+DEFAULT_ADHAN_TRIGGERS: Final = ("fajr", "dhuhr", "asr", "maghrib", "isha")
+DEFAULT_IQAMA_TRIGGERS: Final = ("iqama_fajr", "iqama_dhuhr", "iqama_asr", "iqama_maghrib", "iqama_isha")

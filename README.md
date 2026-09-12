@@ -53,7 +53,19 @@ Times use the Home Assistant timezone.
 
 ## Automations
 
-Timestamp sensors work with a time trigger:
+When you add a mosque, the integration creates three automations on that device (this can be turned off in the setup form):
+
+| Automation | Default | Fires at |
+| --- | --- | --- |
+| **Adhan** | On | Fajr, Dhuhr, Asr, Maghrib, Isha |
+| **Iqama** | Off | Iqama for those five prayers |
+| **Jumua** | On | Friday Jumua adhan and iqama |
+
+They send a Home Assistant persistent notification. Open the mosque device or **Settings → Automations** to edit the action (for example play an adhan on a speaker, or notify your phone). Removing the mosque also removes these automations.
+
+The same device also exposes **Adhan / Iqama / Sunrise** triggers, **next prayer** conditions, and a **Refresh prayer times** action, so you can build extra automations from the device page.
+
+Timestamp sensors still work with a time trigger if you prefer:
 
 ```yaml
 automation:
@@ -66,8 +78,6 @@ automation:
         data:
           message: "Maghrib at the mosque"
 ```
-
-Replace the entity id with the one created for your mosque. Iqama sensors are named `sensor.<mosque>_iqama_maghrib`, and so on.
 
 ## Development
 

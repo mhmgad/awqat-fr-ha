@@ -11,9 +11,10 @@
       },
       "mosque": {
         "title": "Choose mosque",
-        "description": "Prayer times will follow this mosque's Awqat timetable, including its calendar and iqama offsets.",
+        "description": "Prayer times will follow this mosque's Awqat timetable, including its calendar and iqama offsets. Notification automations are added to the mosque device and can be edited or disabled later.",
         "data": {
-          "mosque": "Mosque"
+          "mosque": "Mosque",
+          "create_automations": "Create notification automations for this mosque"
         }
       }
     },
@@ -46,6 +47,33 @@
       "fetch_status": { "name": "Fetch status" },
       "last_success": { "name": "Last successful fetch" },
       "next_refresh": { "name": "Next fetch" }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "fajr": "Fajr adhan",
+      "dhuhr": "Dhuhr adhan",
+      "asr": "Asr adhan",
+      "maghrib": "Maghrib adhan",
+      "isha": "Isha adhan",
+      "jumua": "Jumua adhan",
+      "sunrise": "Sunrise",
+      "iqama_fajr": "Fajr iqama",
+      "iqama_dhuhr": "Dhuhr iqama",
+      "iqama_asr": "Asr iqama",
+      "iqama_maghrib": "Maghrib iqama",
+      "iqama_isha": "Isha iqama",
+      "iqama_jumua": "Jumua iqama"
+    },
+    "condition_type": {
+      "is_next_fajr": "Next prayer is Fajr",
+      "is_next_dhuhr": "Next prayer is Dhuhr",
+      "is_next_asr": "Next prayer is Asr",
+      "is_next_maghrib": "Next prayer is Maghrib",
+      "is_next_isha": "Next prayer is Isha"
+    },
+    "action_type": {
+      "refresh": "Refresh prayer times"
     }
   }
 }

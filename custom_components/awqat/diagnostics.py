@@ -43,6 +43,7 @@ async def async_get_config_entry_diagnostics(
         "next_refresh": data.next_refresh.isoformat() if data.next_refresh else None,
         "next_prayer": data.next_prayer,
         "next_prayer_time": data.next_prayer_time.isoformat(),
+        "automation_ids": list(entry.data.get("automation_ids") or []),
         "today": _day(data.today),
         "tomorrow": _day(data.tomorrow),
     }

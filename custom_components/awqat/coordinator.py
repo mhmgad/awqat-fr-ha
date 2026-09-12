@@ -20,11 +20,13 @@ from .const import (
     CONF_MOSQUE_ALIAS,
     CONF_MOSQUE_CODE,
     CONF_MOSQUE_LABEL,
+    EVENT_AWQAT,
     MAX_FETCH_ATTEMPTS,
     STATUS_FAILED,
     STATUS_OK,
     STATUS_RETRYING,
 )
+from .prayer_events import ScheduledPrayerEvent, iter_upcoming_prayer_events
 from .schedule import next_scheduled_refresh, retry_delay
 
 _LOGGER = logging.getLogger(__name__)
@@ -44,7 +46,9 @@ class AwqatCoordinator(DataUpdateCoordinator[MosqueTimes]):
         self.api = AwqatApi(async_get_clientsession(hass))
         self._failures = 0
         self._unsub: Callable[[], None] | None = None
+        self._prayer_unsubs: list[Callable[[], None]] = []
         self._next_when: datetime | None = None
+        self.device_id: str | None = None
 
     @property
     def mosque_code(self) -> str:
@@ -69,6 +73,7 @@ class AwqatCoordinator(DataUpdateCoordinator[MosqueTimes]):
         data.last_success = dt_util.now(self.timezone)
         data.attempt = 1
         self._schedule_regular(data)
+        self._schedule_prayer_events(data)
         return data
 
     async def _fetch_and_compute(self) -> MosqueTimes:
@@ -138,7 +143,7 @@ class AwqatCoordinator(DataUpdateCoordinator[MosqueTimes]):
         self._schedule_at(when, retrying=False)
 
     def _schedule_at(self, when: datetime, retrying: bool) -> None:
-        self._cancel_schedule()
+        self._cancel_fetch_schedule()
         self._next_when = when
         kind = "retry" if retrying else "scheduled"
         _LOGGER.debug("Next Awqat %s fetch for %s at %s", kind, self.mosque_label, when)
@@ -150,10 +155,57 @@ class AwqatCoordinator(DataUpdateCoordinator[MosqueTimes]):
 
         self._unsub = async_track_point_in_time(self.hass, _fire, when)
 
-    def _cancel_schedule(self) -> None:
+    def async_bind_device(self, device_id: str) -> None:
+        """Attach the registry device id so prayer events can target automations."""
+        self.device_id = device_id
+        if self.data:
+            self._schedule_prayer_events(self.data)
+
+    def _schedule_prayer_events(self, data: MosqueTimes) -> None:
+        self._cancel_prayer_events()
+        if not self.device_id:
+            return
+        now = dt_util.now(self.timezone)
+        for event in iter_upcoming_prayer_events(data, now):
+            self._prayer_unsubs.append(
+                async_track_point_in_time(self.hass, self._prayer_callback(event), event.when)
+            )
+
+    def _prayer_callback(self, event: ScheduledPrayerEvent) -> Callable[[datetime], None]:
+        @callback
+        def _fire(_now: datetime) -> None:
+            if not self.device_id:
+                return
+            self.hass.bus.async_fire(
+                EVENT_AWQAT,
+                {
+                    "device_id": self.device_id,
+                    "type": event.trigger_type,
+                    "prayer": event.prayer,
+                    "kind": event.kind,
+                    "prayer_name": event.prayer_name,
+                    "kind_name": event.kind_name,
+                    "mosque": self.mosque_label,
+                    "mosque_code": self.mosque_code,
+                    "time": event.when.strftime("%H:%M"),
+                },
+            )
+
+        return _fire
+
+    def _cancel_prayer_events(self) -> None:
+        for unsub in self._prayer_unsubs:
+            unsub()
+        self._prayer_unsubs = []
+
+    def _cancel_fetch_schedule(self) -> None:
         if self._unsub:
             self._unsub()
             self._unsub = None
+
+    def _cancel_schedule(self) -> None:
+        self._cancel_fetch_schedule()
+        self._cancel_prayer_events()
 
     @callback
     def async_shutdown(self) -> None:

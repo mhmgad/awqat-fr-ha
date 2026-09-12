@@ -13,6 +13,7 @@ from homeassistant.helpers.selector import SelectOptionDict, SelectSelector, Sel
 
 from .api import AwqatApi, AwqatApiError
 from .const import (
+    CONF_CREATE_AUTOMATIONS,
     CONF_MOSQUE,
     CONF_MOSQUE_ALIAS,
     CONF_MOSQUE_CODE,
@@ -103,6 +104,9 @@ class AwqatConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         CONF_MOSQUE_CODE: code,
                         CONF_MOSQUE_LABEL: selected.get("label") or code,
                         CONF_MOSQUE_ALIAS: selected.get("alias") or code,
+                        CONF_CREATE_AUTOMATIONS: bool(
+                            user_input.get(CONF_CREATE_AUTOMATIONS, True)
+                        ),
                     },
                 )
 
@@ -110,7 +114,8 @@ class AwqatConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             {
                 vol.Required(CONF_MOSQUE): SelectSelector(
                     SelectSelectorConfig(options=options, sort=True)
-                )
+                ),
+                vol.Optional(CONF_CREATE_AUTOMATIONS, default=True): bool,
             }
         )
         return self.async_show_form(step_id="mosque", data_schema=schema, errors=errors)

@@ -11,9 +11,10 @@
       },
       "mosque": {
         "title": "Choisir la mosquée",
-        "description": "Les horaires suivront le calendrier Awqat de cette mosquée, y compris le calendrier manuel et les iqamas.",
+        "description": "Les horaires suivront le calendrier Awqat de cette mosquée, y compris le calendrier manuel et les iqamas. Des automatisations de notification sont ajoutées à l'appareil et peuvent être modifiées ou désactivées ensuite.",
         "data": {
-          "mosque": "Mosquée"
+          "mosque": "Mosquée",
+          "create_automations": "Créer des automatisations de notification pour cette mosquée"
         }
       }
     },
@@ -46,6 +47,33 @@
       "fetch_status": { "name": "État de la mise à jour" },
       "last_success": { "name": "Dernière mise à jour réussie" },
       "next_refresh": { "name": "Prochaine mise à jour" }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "fajr": "Adhan de Fajr",
+      "dhuhr": "Adhan de Dhuhr",
+      "asr": "Adhan de Asr",
+      "maghrib": "Adhan de Maghrib",
+      "isha": "Adhan de Isha",
+      "jumua": "Adhan de Joumoua",
+      "sunrise": "Lever du soleil",
+      "iqama_fajr": "Iqama de Fajr",
+      "iqama_dhuhr": "Iqama de Dhuhr",
+      "iqama_asr": "Iqama de Asr",
+      "iqama_maghrib": "Iqama de Maghrib",
+      "iqama_isha": "Iqama de Isha",
+      "iqama_jumua": "Iqama de Joumoua"
+    },
+    "condition_type": {
+      "is_next_fajr": "La prochaine prière est Fajr",
+      "is_next_dhuhr": "La prochaine prière est Dhuhr",
+      "is_next_asr": "La prochaine prière est Asr",
+      "is_next_maghrib": "La prochaine prière est Maghrib",
+      "is_next_isha": "La prochaine prière est Isha"
+    },
+    "action_type": {
+      "refresh": "Actualiser les horaires"
     }
   }
 }
