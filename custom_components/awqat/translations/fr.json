@@ -1,0 +1,51 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mosquée Awqat",
+        "description": "Recherchez une mosquée publiée sur awqat.fr, ou listez les mosquées proches de ce Home Assistant.",
+        "data": {
+          "query": "Mosquée ou ville",
+          "nearby": "Rechercher près de l'emplacement de Home Assistant"
+        }
+      },
+      "mosque": {
+        "title": "Choisir la mosquée",
+        "description": "Les horaires suivront le calendrier Awqat de cette mosquée, y compris le calendrier manuel et les iqamas.",
+        "data": {
+          "mosque": "Mosquée"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre Awqat. Réessayez dans un instant.",
+      "no_mosques": "Aucune mosquée ne correspond à cette recherche.",
+      "search_required": "Saisissez une mosquée ou une ville, ou activez la recherche à proximité."
+    },
+    "abort": {
+      "already_configured": "Cette mosquée est déjà configurée."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "fajr": { "name": "Fajr" },
+      "sunrise": { "name": "Lever du soleil" },
+      "dhuhr": { "name": "Dhuhr" },
+      "jumua": { "name": "Joumoua" },
+      "asr": { "name": "Asr" },
+      "maghrib": { "name": "Maghrib" },
+      "isha": { "name": "Isha" },
+      "iqama_fajr": { "name": "Iqama Fajr" },
+      "iqama_dhuhr": { "name": "Iqama Dhuhr" },
+      "iqama_jumua": { "name": "Iqama Joumoua" },
+      "iqama_asr": { "name": "Iqama Asr" },
+      "iqama_maghrib": { "name": "Iqama Maghrib" },
+      "iqama_isha": { "name": "Iqama Isha" },
+      "next_prayer": { "name": "Prochaine prière" },
+      "next_prayer_name": { "name": "Nom de la prochaine prière" },
+      "fetch_status": { "name": "État de la mise à jour" },
+      "last_success": { "name": "Dernière mise à jour réussie" },
+      "next_refresh": { "name": "Prochaine mise à jour" }
+    }
+  }
+}

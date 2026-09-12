@@ -1,0 +1,38 @@
+{
+  "@id": "4f6c1494-a1a3-4296-88bf-8989e294b0c5",
+  "result": [
+    {
+      "@id": "fdf16519-b465-4579-89a2-5cb5f0837055",
+      "code": "badr-lille",
+      "alias": "badr-lille",
+      "label": "Mosqu\u00e9e Badr, Lille",
+      "wdVersion": "3.1.5",
+      "updatedOn": "2025-03-07T16:28:49.000+00:00"
+    },
+    {
+      "@id": "f81eba30-87ed-436c-97b9-64c4af40bfe5",
+      "code": "ville-charlas",
+      "alias": "ville-charlas",
+      "label": "Ville de Charlas",
+      "wdVersion": "3.1.5",
+      "updatedOn": "2025-03-07T16:28:49.000+00:00"
+    },
+    {
+      "@id": "4b935d2c-2e3b-4805-a805-d48163c8673e",
+      "code": "bilel-93200",
+      "alias": "bilel-93200",
+      "label": "Mosqu\u00e9e Bilel, Saint-denis",
+      "wdVersion": "3.1.5",
+      "updatedOn": "2025-12-19T06:23:48.000+00:00"
+    },
+    {
+      "@id": "78a60f13-fc5a-4e3a-87ed-630aa5d066db",
+      "code": "sp-j.jaures-77270",
+      "alias": "sp-j.jaures-77270",
+      "label": "Salle pri\u00e8re J.Jaur\u00e8s, Villeparisis",
+      "wdVersion": "3.1.5",
+      "updatedOn": "2026-08-24T16:12:46.000+00:00"
+    }
+  ],
+  "messages": []
+}

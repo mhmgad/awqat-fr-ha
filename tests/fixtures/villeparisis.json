@@ -1,0 +1,132 @@
+{
+  "result": {
+    "code": "awqat_mosquee_villeparisis",
+    "alias": "mosquee-villeparisis",
+    "cfg": {
+      "targetWidget": {
+        "code": "awqat_mosquee_villeparisis",
+        "label": "Mosquee de Villeparisis",
+        "updatedOn": "2026-09-01T05:07:50.000+00:00",
+        "alias": "mosquee-villeparisis"
+      },
+      "geoPlace": {
+        "lat": 48.9517558,
+        "long": 2.6224709,
+        "name": "1 Rue de l'Industrie, 77270 Villeparisis, France",
+        "timezone": 1,
+        "timezone_auto": true
+      },
+      "timeSetting": {
+        "method": "UOIF",
+        "useCal": false,
+        "timeItemSettings": {
+          "imsak": {
+            "waqtName": "imsak",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": -5,
+            "hidden": true
+          },
+          "fajr": {
+            "waqtName": "fajr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": -5
+          },
+          "sunrise": {
+            "waqtName": "sunrise",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "dhuhr": {
+            "waqtName": "dhuhr",
+            "durationBeforeIqama": {
+              "m": 10,
+              "s": 0
+            },
+            "fixedTimes": [
+              {
+                "type": "dst_no",
+                "time": "1305"
+              },
+              {
+                "type": "dst_yes",
+                "time": "1400"
+              }
+            ],
+            "period": null,
+            "offset": null,
+            "hidden": false
+          },
+          "jumua": {
+            "waqtName": "jumua",
+            "durationBeforeIqama": {
+              "m": 35
+            },
+            "fixedTimes": [
+              {
+                "type": "interval",
+                "time": "1300",
+                "start": "0101",
+                "end": "3112"
+              }
+            ],
+            "period": 0,
+            "offset": 0
+          },
+          "asr": {
+            "waqtName": "asr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [
+              {
+                "type": "min",
+                "time": "1515"
+              }
+            ],
+            "period": 0,
+            "offset": null
+          },
+          "maghrib": {
+            "waqtName": "maghrib",
+            "durationBeforeIqama": {
+              "m": 5
+            },
+            "fixedTimes": [],
+            "period": 3,
+            "offset": 0
+          },
+          "isha": {
+            "waqtName": "isha",
+            "durationBeforeIqama": {
+              "m": 10,
+              "s": 0
+            },
+            "fixedTimes": [
+              {
+                "type": "min",
+                "time": "1905",
+                "period": ""
+              }
+            ],
+            "period": 90,
+            "offset": null,
+            "hidden": false
+          }
+        }
+      }
+    },
+    "updatedOnCfg": "2026-09-01T05:07:58.000+00:00"
+  }
+}

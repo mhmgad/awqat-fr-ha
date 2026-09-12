@@ -1,0 +1,51 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Awqat mosque",
+        "description": "Search mosques published on awqat.fr, or list mosques near this Home Assistant location.",
+        "data": {
+          "query": "Mosque or city",
+          "nearby": "Search near Home Assistant location"
+        }
+      },
+      "mosque": {
+        "title": "Choose mosque",
+        "description": "Prayer times will follow this mosque's Awqat timetable, including its calendar and iqama offsets.",
+        "data": {
+          "mosque": "Mosque"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach Awqat. Try again in a moment.",
+      "no_mosques": "No mosques matched that search.",
+      "search_required": "Enter a mosque or city, or enable nearby search."
+    },
+    "abort": {
+      "already_configured": "That mosque is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "fajr": { "name": "Fajr" },
+      "sunrise": { "name": "Sunrise" },
+      "dhuhr": { "name": "Dhuhr" },
+      "jumua": { "name": "Jumua" },
+      "asr": { "name": "Asr" },
+      "maghrib": { "name": "Maghrib" },
+      "isha": { "name": "Isha" },
+      "iqama_fajr": { "name": "Iqama Fajr" },
+      "iqama_dhuhr": { "name": "Iqama Dhuhr" },
+      "iqama_jumua": { "name": "Iqama Jumua" },
+      "iqama_asr": { "name": "Iqama Asr" },
+      "iqama_maghrib": { "name": "Iqama Maghrib" },
+      "iqama_isha": { "name": "Iqama Isha" },
+      "next_prayer": { "name": "Next prayer" },
+      "next_prayer_name": { "name": "Next prayer name" },
+      "fetch_status": { "name": "Fetch status" },
+      "last_success": { "name": "Last successful fetch" },
+      "next_refresh": { "name": "Next fetch" }
+    }
+  }
+}

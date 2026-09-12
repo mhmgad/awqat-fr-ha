@@ -1,0 +1,112 @@
+{
+  "result": {
+    "code": "bilel-93200",
+    "alias": "bilel-93200",
+    "cfg": {
+      "targetWidget": {
+        "code": "bilel-93200",
+        "label": "Mosqu\u00e9e Bilel, Saint-denis",
+        "alias": "bilel-93200",
+        "updatedOn": "2025-06-29T02:09:27.000+00:00"
+      },
+      "geoPlace": {
+        "lat": 48.93715395139373,
+        "long": 2.361478604199737,
+        "name": "140 Rue Gabriel P\u00e9ri, 93200 Saint-Denis France",
+        "timezone": "+1",
+        "timezone_auto": true
+      },
+      "timeSetting": {
+        "method": "CUSTOM",
+        "useCal": false,
+        "timeItemSettings": {
+          "imsak": {
+            "waqtName": "imsak",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0,
+            "hidden": true
+          },
+          "fajr": {
+            "waqtName": "fajr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0,
+            "angle": "12"
+          },
+          "sunrise": {
+            "waqtName": "sunrise",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "dhuhr": {
+            "waqtName": "dhuhr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "jumua": {
+            "waqtName": "jumua",
+            "durationBeforeIqama": {
+              "m": 35
+            },
+            "fixedTimes": [
+              {
+                "type": "dst_no",
+                "time": "1300"
+              },
+              {
+                "type": "dst_yes",
+                "time": "1400"
+              }
+            ],
+            "period": 0,
+            "offset": 0
+          },
+          "asr": {
+            "waqtName": "asr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "maghrib": {
+            "waqtName": "maghrib",
+            "durationBeforeIqama": {
+              "m": 5
+            },
+            "fixedTimes": [],
+            "period": 3,
+            "offset": 0
+          },
+          "isha": {
+            "waqtName": "isha",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 90,
+            "offset": 0,
+            "angle": "12"
+          }
+        }
+      }
+    },
+    "updatedOnCfg": "2025-12-19T06:23:48.000+00:00"
+  }
+}

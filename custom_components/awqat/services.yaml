@@ -1,0 +1,3 @@
+refresh:
+  name: Refresh prayer times
+  description: Pull the selected mosque timetable from Awqat now. Failures still retry a few times, then the fetch status sensor is set to failed.

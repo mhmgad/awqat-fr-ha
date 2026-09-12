@@ -1,0 +1,112 @@
+{
+  "result": {
+    "code": "badr-lille",
+    "alias": "badr-lille",
+    "cfg": {
+      "targetWidget": {
+        "code": "badr-lille",
+        "label": "Mosqu\u00e9e Badr, Lille",
+        "updatedOn": 1652528539000,
+        "alias": "badr-lille"
+      },
+      "geoPlace": {
+        "lat": 50.61906,
+        "long": 3.06438,
+        "name": "206 Rue d'Arras, 59000 Lille, France",
+        "timezone": 1,
+        "timezone_auto": true
+      },
+      "timeSetting": {
+        "method": "UOIF",
+        "useCal": true,
+        "timeItemSettings": {
+          "imsak": {
+            "waqtName": "imsak",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0,
+            "hidden": true
+          },
+          "fajr": {
+            "waqtName": "fajr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0,
+            "angle": "12"
+          },
+          "sunrise": {
+            "waqtName": "sunrise",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "dhuhr": {
+            "waqtName": "dhuhr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [
+              {
+                "type": "dst_yes",
+                "time": "1400"
+              },
+              {
+                "type": "dst_no",
+                "time": "1300"
+              }
+            ],
+            "period": 0,
+            "offset": 0
+          },
+          "jumua": {
+            "waqtName": "jumua",
+            "durationBeforeIqama": {
+              "m": 35
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "asr": {
+            "waqtName": "asr",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0
+          },
+          "maghrib": {
+            "waqtName": "maghrib",
+            "durationBeforeIqama": {
+              "m": 5
+            },
+            "fixedTimes": [],
+            "period": 3,
+            "offset": 0
+          },
+          "isha": {
+            "waqtName": "isha",
+            "durationBeforeIqama": {
+              "m": 10
+            },
+            "fixedTimes": [],
+            "period": 0,
+            "offset": 0,
+            "angle": "12"
+          }
+        }
+      }
+    },
+    "updatedOnCfg": "2025-03-07T16:28:49.000+00:00"
+  }
+}
