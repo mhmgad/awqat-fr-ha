@@ -11,7 +11,7 @@ from datetime import date, datetime, time, timedelta
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from .const import DISPLAY_NAMES, NEXT_PRAYER_CANDIDATES, PRAYERS
+from .const import DEFAULT_ATHAN_URL, DISPLAY_NAMES, NEXT_PRAYER_CANDIDATES, PRAYERS
 from .praytimes import PrayTimes
 
 CALENDAR_PRAYERS = ("fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha")
@@ -63,6 +63,16 @@ class MosqueTimes:
     last_success: datetime | None = None
     next_refresh: datetime | None = None
     attempt: int = 1
+    athan_url: str | None = None
+
+
+def extract_athan_url(cfg: dict[str, Any]) -> str:
+    """Prefer the mosque's published adhan audio, else a public fallback."""
+    for name in ("fajr", "dhuhr", "maghrib", "isha", "asr"):
+        src = (_item_settings(cfg).get(name) or {}).get("athanSoundSrc")
+        if isinstance(src, str) and src.startswith("http"):
+            return src
+    return DEFAULT_ATHAN_URL
 
 
 def duration_minutes(value: Any) -> float:
@@ -368,4 +378,5 @@ def compute_mosque_times(
         next_prayer=next_name,
         next_prayer_time=next_time,
         timezone=str(tz),
+        athan_url=extract_athan_url(cfg),
     )

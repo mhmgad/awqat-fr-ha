@@ -23,7 +23,15 @@ CONF_QUERY: Final = "query"
 CONF_NEARBY: Final = "nearby"
 CONF_MOSQUE: Final = "mosque"
 CONF_CREATE_AUTOMATIONS: Final = "create_automations"
+CONF_CREATE_AZAN: Final = "create_azan"
+CONF_CREATE_IQAMA: Final = "create_iqama"
+CONF_CREATE_JUMUA: Final = "create_jumua"
+CONF_AZAN_PLAYER: Final = "azan_player"
+CONF_PAUSE_PLAYERS: Final = "pause_players"
 CONF_AUTOMATION_IDS: Final = "automation_ids"
+
+DEFAULT_ATHAN_URL: Final = "https://media.sd.ma/assabile/adhan_3435370/8c052a5edec1.mp3"
+LOVELACE_CARD_URL: Final = "/awqat-local/awqat-prayer-card.js"
 
 NEARBY_DISTANCE_KM: Final = 40
 

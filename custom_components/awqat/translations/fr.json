@@ -11,10 +11,38 @@
       },
       "mosque": {
         "title": "Choisir la mosquée",
-        "description": "Les horaires suivront le calendrier Awqat de cette mosquée, y compris le calendrier manuel et les iqamas. Des automatisations de notification sont ajoutées à l'appareil et peuvent être modifiées ou désactivées ensuite.",
+        "description": "Les horaires suivront le calendrier Awqat de cette mosquée, y compris le calendrier manuel et les iqamas.",
         "data": {
-          "mosque": "Mosquée",
-          "create_automations": "Créer des automatisations de notification pour cette mosquée"
+          "mosque": "Mosquée"
+        }
+      },
+      "azan": {
+        "title": "Automatisation de l'adhan",
+        "description": "Créer une automatisation qui se déclenche à Fajr, Dhuhr, Asr, Maghrib et Isha. Elle peut mettre en pause les téléviseurs et autres médias, puis diffuser l'adhan sur l'enceinte choisie ensuite.",
+        "data": {
+          "create_azan": "Créer l'automatisation de l'adhan"
+        }
+      },
+      "iqama": {
+        "title": "Automatisation de l'iqama",
+        "description": "Créer une automatisation distincte qui se déclenche à l'iqama des cinq prières. Elle met en pause les téléviseurs et autres médias pour que la pièce soit calme.",
+        "data": {
+          "create_iqama": "Créer l'automatisation de l'iqama"
+        }
+      },
+      "jumua": {
+        "title": "Automatisation de la joumoua",
+        "description": "Créer une automatisation pour le vendredi. Elle met en pause les autres médias et peut diffuser l'adhan à l'heure de la joumoua.",
+        "data": {
+          "create_jumua": "Créer l'automatisation de la joumoua"
+        }
+      },
+      "media": {
+        "title": "Enceinte et téléviseurs",
+        "description": "Choisissez une enceinte pour l'adhan. Vous pouvez aussi choisir des téléviseurs ou d'autres lecteurs à mettre en pause et en sourdine. Laissez vide pour seulement recevoir une notification. Vous pourrez modifier cela plus tard dans les options.",
+        "data": {
+          "azan_player": "Diffuser l'adhan sur cette enceinte",
+          "pause_players": "Mettre en pause et en sourdine ces téléviseurs ou lecteurs"
         }
       }
     },
@@ -25,6 +53,21 @@
     },
     "abort": {
       "already_configured": "Cette mosquée est déjà configurée."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Adhan, iqama et médias",
+        "description": "Choisissez les automatisations à conserver. L'enceinte diffuse l'adhan. Les téléviseurs et autres lecteurs sont mis en pause et en sourdine au moment de l'adhan, de l'iqama ou de la joumoua.",
+        "data": {
+          "create_azan": "Automatisation de l'adhan (cinq prières)",
+          "create_iqama": "Automatisation de l'iqama",
+          "create_jumua": "Automatisation de la joumoua (vendredi)",
+          "azan_player": "Diffuser l'adhan sur cette enceinte",
+          "pause_players": "Mettre en pause et en sourdine ces téléviseurs ou lecteurs"
+        }
+      }
     }
   },
   "entity": {

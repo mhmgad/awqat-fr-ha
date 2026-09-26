@@ -74,11 +74,14 @@ class AwqatEntity(CoordinatorEntity[AwqatCoordinator], SensorEntity):
         data = self.coordinator.data
         if not data:
             return {}
-        return {
+        attrs: dict[str, Any] = {
             "mosque": data.mosque_label,
             "mosque_code": data.mosque_code,
             "method": data.method,
         }
+        if data.athan_url:
+            attrs["athan_url"] = data.athan_url
+        return attrs
 
 
 class AwqatPrayerSensor(AwqatEntity):

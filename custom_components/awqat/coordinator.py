@@ -188,6 +188,7 @@ class AwqatCoordinator(DataUpdateCoordinator[MosqueTimes]):
                     "mosque": self.mosque_label,
                     "mosque_code": self.mosque_code,
                     "time": event.when.strftime("%H:%M"),
+                    "athan_url": (self.data.athan_url if self.data else None),
                 },
             )
 

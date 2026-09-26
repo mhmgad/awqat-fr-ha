@@ -11,10 +11,38 @@
       },
       "mosque": {
         "title": "Choose mosque",
-        "description": "Prayer times will follow this mosque's Awqat timetable, including its calendar and iqama offsets. Notification automations are added to the mosque device and can be edited or disabled later.",
+        "description": "Prayer times will follow this mosque's Awqat timetable, including its calendar and iqama offsets.",
         "data": {
-          "mosque": "Mosque",
-          "create_automations": "Create notification automations for this mosque"
+          "mosque": "Mosque"
+        }
+      },
+      "azan": {
+        "title": "Azan automation",
+        "description": "Create an automation that fires at Fajr, Dhuhr, Asr, Maghrib and Isha. It can pause TVs and other media, then play the azan on a speaker you choose next.",
+        "data": {
+          "create_azan": "Create the azan automation"
+        }
+      },
+      "iqama": {
+        "title": "Iqama automation",
+        "description": "Create a separate automation that fires at iqama for the five daily prayers. It pauses TVs and other media so the room is quiet for prayer.",
+        "data": {
+          "create_iqama": "Create the iqama automation"
+        }
+      },
+      "jumua": {
+        "title": "Jumua automation",
+        "description": "Create a Friday Jumua automation. It pauses other media and can play the azan at Jumua time.",
+        "data": {
+          "create_jumua": "Create the Jumua automation"
+        }
+      },
+      "media": {
+        "title": "Azan speaker and TVs",
+        "description": "Pick a speaker to play the azan. Optionally pick TVs or other media players to pause and mute when azan or iqama starts. Leave blank to only send a notification. You can change this later in the integration options.",
+        "data": {
+          "azan_player": "Play azan on this speaker",
+          "pause_players": "Pause and mute these TVs or media players"
         }
       }
     },
@@ -25,6 +53,21 @@
     },
     "abort": {
       "already_configured": "That mosque is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Azan, iqama and media",
+        "description": "Choose which automations to keep. The azan speaker plays the mosque adhan. TVs and other media players are paused and muted when azan, iqama or Jumua starts.",
+        "data": {
+          "create_azan": "Azan automation (five daily prayers)",
+          "create_iqama": "Iqama automation",
+          "create_jumua": "Jumua automation (Friday)",
+          "azan_player": "Play azan on this speaker",
+          "pause_players": "Pause and mute these TVs or media players"
+        }
+      }
     }
   },
   "entity": {
