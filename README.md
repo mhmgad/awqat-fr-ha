@@ -89,6 +89,8 @@ automation:
 
 On setup the integration tries to add a sidebar dashboard with the **Awqat Prayer Times** card. You can also add the card yourself:
 
+When adding the card in the visual editor, choose a mosque that has already been set up with the Awqat integration. The editor automatically connects that mosque's prayer sensors.
+
 ```yaml
 type: custom:awqat-prayer-card
 title: Mosquée Badr, Lille

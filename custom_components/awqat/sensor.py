@@ -77,6 +77,7 @@ class AwqatEntity(CoordinatorEntity[AwqatCoordinator], SensorEntity):
         attrs: dict[str, Any] = {
             "mosque": data.mosque_label,
             "mosque_code": data.mosque_code,
+            "awqat_key": self._key,
             "method": data.method,
         }
         if data.athan_url:
