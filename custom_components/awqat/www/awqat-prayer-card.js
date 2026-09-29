@@ -2,26 +2,20 @@ class AwqatPrayerCard extends HTMLElement {
   static getStubConfig() {
     return {
       type: "custom:awqat-prayer-card",
-      entities: {
-        fajr: "sensor.fajr",
-        dhuhr: "sensor.dhuhr",
-        asr: "sensor.asr",
-        maghrib: "sensor.maghrib",
-        isha: "sensor.isha",
-        jumua: "sensor.jumua",
-        sunrise: "sensor.sunrise",
-        next_prayer: "sensor.next_prayer",
-        next_prayer_name: "sensor.next_prayer_name",
-      },
+      entities: {},
     };
   }
 
   setConfig(config) {
-    if (!config || !config.entities) {
-      throw new Error("Set entities for fajr, dhuhr, asr, maghrib, isha, jumua, sunrise, next_prayer");
+    if (!config) {
+      throw new Error("A configuration is required");
     }
     this._config = config;
     this._tick = this._tick.bind(this);
+  }
+
+  static getConfigElement() {
+    return document.createElement("awqat-prayer-card-editor");
   }
 
   connectedCallback() {
@@ -264,6 +258,105 @@ class AwqatPrayerCard extends HTMLElement {
   }
 }
 
+class AwqatPrayerCardEditor extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  setConfig(config) {
+    this._config = config || {};
+    this._render();
+  }
+
+  set hass(hass) {
+    this._hass = hass;
+    this._render();
+  }
+
+  _mosques() {
+    const mosques = new Map();
+    Object.entries(this._hass.states || {}).forEach(([entityId, state]) => {
+      const { mosque_code: code, awqat_key: key, mosque: label } = state.attributes || {};
+      if (!code || !key) {
+        return;
+      }
+      const mosque = mosques.get(code) || { code, label: label || code, entities: {} };
+      mosque.entities[key] = entityId;
+      mosques.set(code, mosque);
+    });
+    return [...mosques.values()]
+      .filter((mosque) =>
+        ["fajr", "dhuhr", "asr", "maghrib", "isha", "next_prayer"].every(
+          (key) => mosque.entities[key],
+        ),
+      )
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }
+
+  _render() {
+    if (!this.shadowRoot || !this._hass) {
+      return;
+    }
+    const mosques = this._mosques();
+    const selectedEntity = this._config.entities?.next_prayer;
+    const selectedState = selectedEntity && this._hass.states[selectedEntity];
+    const selectedCode =
+      this._config.mosque_code || selectedState?.attributes?.mosque_code || "";
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: block; }
+        label { display: block; margin-bottom: 8px; }
+        select { box-sizing: border-box; width: 100%; padding: 10px; }
+        p { opacity: 0.7; }
+      </style>
+      <label for="mosque">Mosque</label>
+      <select id="mosque"></select>
+      <p id="empty"></p>
+    `;
+    const select = this.shadowRoot.querySelector("select");
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select a configured Awqat mosque";
+    select.appendChild(placeholder);
+    mosques.forEach((mosque) => {
+      const option = document.createElement("option");
+      option.value = mosque.code;
+      option.textContent = mosque.label;
+      select.appendChild(option);
+    });
+    select.value = selectedCode;
+    select.disabled = mosques.length === 0;
+    const empty = this.shadowRoot.querySelector("#empty");
+    empty.textContent =
+      mosques.length === 0
+        ? "Add a mosque with the Awqat integration before configuring this card."
+        : "";
+    select.addEventListener("change", () => {
+      const mosque = mosques.find((item) => item.code === select.value);
+      if (!mosque) {
+        return;
+      }
+      const config = {
+        ...this._config,
+        type: "custom:awqat-prayer-card",
+        title: mosque.label,
+        mosque_code: mosque.code,
+        entities: mosque.entities,
+      };
+      this._config = config;
+      this.dispatchEvent(
+        new CustomEvent("config-changed", {
+          bubbles: true,
+          composed: true,
+          detail: { config },
+        }),
+      );
+    });
+  }
+}
+
+customElements.define("awqat-prayer-card-editor", AwqatPrayerCardEditor);
 customElements.define("awqat-prayer-card", AwqatPrayerCard);
 
 window.customCards = window.customCards || [];
